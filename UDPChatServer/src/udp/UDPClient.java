@@ -15,7 +15,7 @@ public class UDPClient {
             DatagramSocket socket = new DatagramSocket(port);
 
             InetAddress addr = InetAddress.getLocalHost();
-            InetAddress foreign = InetAddress.getByName("192.168.56.1");
+            InetAddress foreign = InetAddress.getByName("10.103.43.74");
 			String hostname = addr.getHostName();
 			String hostAddress = addr.getHostAddress();
 			System.out.println("IP Address: " + hostAddress);
@@ -25,9 +25,9 @@ public class UDPClient {
             byte[] buffer = new byte[1024];
 			DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
 
-            String dat = "Did this work?";
-            DatagramPacket senditboi = new DatagramPacket(dat.getBytes(), dat.length(), foreign, 4000);
-            socket.send(senditboi);
+            // String dat = "Did this work?";
+            // DatagramPacket senditboi = new DatagramPacket(dat.getBytes(), dat.length(), foreign, 8000);
+            // socket.send(senditboi);
 
             while (true) {
                 Scanner sc = new Scanner(System.in);
