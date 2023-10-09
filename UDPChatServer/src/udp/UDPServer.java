@@ -45,7 +45,7 @@ public class UDPServer {
 			byte[] buffer = new byte[1024];
 			DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
 			socket.receive(packet); // receive the message over the packet from the client
-			System.out.println(packet.toString());
+			System.out.println(new String(packet.getData(), 0, packet.getLength()));
 			group.add(packet.getSocketAddress()); // get the IP & port # of the client
 			
 			for (SocketAddress s:group) {
@@ -55,7 +55,7 @@ public class UDPServer {
 					socket.send(greet); // send out the packet with the headers through the socket
 					firstTime = false;
 				} // end of if
-				System.out.println(s);
+
 				DatagramPacket p = new DatagramPacket(buffer, 1024, s);
 			} // end of for
 		} // end of while
