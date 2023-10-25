@@ -32,7 +32,7 @@ public class UDPClient {
             while (true) {
                 Scanner sc = new Scanner(System.in);
                 String st = sc.nextLine();
-                DatagramPacket thismsg = new DatagramPacket(st.getBytes(), st.length(), foreign, 4000);
+                DatagramPacket thismsg = new DatagramPacket(st.getBytes(), st.length(), foreign, 8000);
                 socket.send(thismsg);
             }
         } catch (Exception e) {
