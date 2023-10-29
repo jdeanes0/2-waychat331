@@ -15,7 +15,7 @@ public class UDPServer {
 	static String ip;
 	static boolean firstTime;
     public static void main(String[] args) {
-        UDPSend sender = new UDPSend(); // loop to send messages
+        //UDPSend sender = new UDPSend(); // loop to send messages
         UDPReceive receiver = new UDPReceive(); // loop to receive messages
 
         firstTime = true;
