@@ -8,6 +8,9 @@ import java.util.Scanner;
 
 /**
  * Class to Send individual UDP messages in a loop
+ * 
+ * @author jdeanes0
+ * @version 10/29/23
  */
 public class UDPSend implements Runnable {
 

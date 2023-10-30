@@ -6,7 +6,15 @@ import java.net.InetAddress;
 import java.net.SocketAddress;
 import java.net.SocketException;
 import java.util.HashSet;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
+/**
+ * Main class for the server; calls upon UDPSend and UDPReceive after initializing.
+ * 
+ * @author jdeanes0
+ * @version 10/29/23
+ */
 public class UDPServer {
     
     static DatagramSocket socket;
@@ -42,4 +50,24 @@ public class UDPServer {
 		System.out.println("Client Activity:");
     }
 
+	    /**
+     * Loop to handle input exceptions when getting integers
+     * 
+     * @param s Scanner object, default settings
+     * @return port number
+     */
+    public static int getPort(Scanner s, String prompt) {
+        int aport;
+        do {
+            try {
+                System.out.print(prompt);
+                aport = s.nextInt();
+                break; // break once the port number is valid.
+            } catch (InputMismatchException e) {
+                System.err.println("That is not a number, much less a port number.");
+            }
+        } while (true);
+
+        return aport;
+    }
 }

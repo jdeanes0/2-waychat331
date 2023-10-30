@@ -8,7 +8,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Main class for the client, encloses the UDPReceive and UDPSend classes
+ * Main class for the client; calls upon UDPSend and UDPReceive after initializing.
  * 
  * @author jdeanes0
  * @version 10/29/23
@@ -18,7 +18,7 @@ public class UDPClient {
         // Get basic info about target
         Scanner s = new Scanner(System.in);
 
-        InetAddress local; // 
+        InetAddress local; // Local IP necessary only for debug/printing to console.
         InetAddress IP;
 
         do {
