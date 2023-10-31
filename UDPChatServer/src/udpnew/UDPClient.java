@@ -38,7 +38,7 @@ public class UDPClient {
         int hport = getPort(s, "Host Port> ");
         int tport = getPort(s, "Target Port> ");
 
-        // Shows that the server is active
+        // Shows that the client is active
         System.out.println("IP Address: " + hostAddress);
         System.out.println("Port #: " + hport);
         System.out.println("Hostname: " + hostname);
@@ -57,11 +57,14 @@ public class UDPClient {
             }
         } while (true);
          
-        UDPReceive udpr = new UDPReceive();
-        // UDPReceive udpr = new UDPReceive(tport, IP, socket);
+        UDPReceive udpr = new UDPReceive(socket);
         UDPSend udps = new UDPSend(tport, IP, socket);
-        udpr.run();
-        udps.run();
+
+        Thread send = new Thread(udps);
+        Thread receive = new Thread(udpr);
+
+        receive.start();
+        send.start();
     }
 
     /**

@@ -24,7 +24,7 @@ public class UDPServer {
 	static boolean firstTime;
     public static void main(String[] args) {
         //UDPSend sender = new UDPSend(); // loop to send messages
-        UDPReceive receiver = new UDPReceive(); // loop to receive messages
+        UDPReceive receiver = new UDPReceive(socket); // loop to receive messages
 
         firstTime = true;
 		System.out.println("*****Server Started*****");
