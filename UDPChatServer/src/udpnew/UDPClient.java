@@ -45,7 +45,7 @@ public class UDPClient {
 
         /*
          * Necessary fields have now been retrieved from the user.
-         * Create two sockets and give them to the threads to begin their send/receive loops.
+         * Create a socket and give it to the threads to begin their send/receive loops.
          */
         DatagramSocket socket;
         do {

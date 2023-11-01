@@ -9,7 +9,7 @@ import java.net.DatagramSocket;
  */
 public class UDPReceive implements Runnable {
 
-    private DatagramSocket socket;
+    protected DatagramSocket socket;
 
     public UDPReceive(DatagramSocket socket) {
         this.socket = socket;

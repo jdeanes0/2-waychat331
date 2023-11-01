@@ -1,6 +1,5 @@
 package udpnew;
 
-import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketAddress;
@@ -21,36 +20,57 @@ public class UDPServer {
 	static HashSet<SocketAddress> group;
 	static InetAddress addr;
 	static String ip;
-	static boolean firstTime;
-    public static void main(String[] args) {
-        //UDPSend sender = new UDPSend(); // loop to send messages
-        UDPReceive receiver = new UDPReceive(socket); // loop to receive messages
 
-        firstTime = true;
-		System.out.println("*****Server Started*****");
-		group = new HashSet<SocketAddress>();
-		int port = 4000;
-		try {
-            socket = new DatagramSocket(port);
-        } catch (SocketException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-		try {
+    public static void main(String[] args) {
+        // full re-write BABYYYYY
+        // So how to init?
+        /*
+         * Get local IP
+         * Get port to open on
+         * Print port and IP to console
+         * No greeting, I don't really care about greeting messages.
+         * 
+         * Create the socket
+         * Provide it to the threads aaaaaaand go.
+         * Also after getting each thread: if another user wants to connect, 
+         */
+        Scanner s = new Scanner(System.in);
+
+        int hport = getPort(s, "Host Port> ");
+
+        try {
 			// Get all the host information
 			InetAddress addr = InetAddress.getLocalHost();
 			String hostname = addr.getHostName();
 			String hostAddress = addr.getHostAddress();
 			System.out.println("IP Address: " + hostAddress);
-			System.out.println("Port #: " + port);
+			System.out.println("Port #: " + hport);
 			System.out.println("Hostname: " + hostname);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("Client Activity:");
+
+        do {
+            try {
+                socket = new DatagramSocket(hport);
+                break;
+            } catch (SocketException e) {
+                e.printStackTrace();
+                break;
+            }
+        } while (true);
+
+        System.out.println("*****Server Started*****");
+		group = new HashSet<SocketAddress>();
+
+        UDPReceive udpr = new UDPReceive(socket);
+
+        Thread receive = new Thread(udpr);
+
+        receive.start();
     }
 
-	    /**
+	/**
      * Loop to handle input exceptions when getting integers
      * 
      * @param s Scanner object, default settings
