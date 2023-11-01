@@ -63,7 +63,7 @@ public class UDPServer {
         System.out.println("*****Server Started*****");
 		group = new HashSet<SocketAddress>();
 
-        UDPReceive udpr = new UDPReceive(socket);
+        UDPServerReceive udpr = new UDPServerReceive(socket);
 
         Thread receive = new Thread(udpr);
 

@@ -22,6 +22,8 @@ public class UDPServerReceive extends UDPReceive{
      * Additionally, will spawn a new thread if a new user connects.
      */
     public void run() {
+        group = new HashSet<SocketAddress>();
+        firstTime = true;
         while (true) {
 			byte[] buffer = new byte[1024];
 			DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
@@ -34,13 +36,13 @@ public class UDPServerReceive extends UDPReceive{
 			group.add(packet.getSocketAddress()); // get the IP & port # of the client
             int currentPort = packet.getPort();
             InetAddress currentIP = packet.getAddress();
-			
+
 			for (SocketAddress s:group) {
 				if (firstTime == true) {
                     UDPSend udps = new UDPSend(currentPort, currentIP, socket);
                     Thread send = new Thread(udps);
                     send.start(); // begin a thread to allow it to communicate to a client.
-					String dat = "First Client Connected!";
+					String dat = "Hello there, first time user!";
 					DatagramPacket greet = new DatagramPacket(dat.getBytes(), dat.length(), s); // Create a datagram with the appropriate headers
 					try {
                         socket.send(greet);
