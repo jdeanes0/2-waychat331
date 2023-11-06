@@ -1,4 +1,4 @@
-package udpnew;
+ package udpnew;
 
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -50,7 +50,7 @@ public class UDPClient {
         DatagramSocket socket;
         do {
             try {
-                socket = new DatagramSocket(hport);
+                socket = new DatagramSocket(hport, local);
                 break;
             } catch (SocketException e) {
                 e.printStackTrace();
