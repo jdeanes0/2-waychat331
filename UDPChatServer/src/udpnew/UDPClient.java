@@ -1,4 +1,4 @@
- package udpnew;
+package udpnew;
 
 import java.net.DatagramSocket;
 import java.net.InetAddress;
