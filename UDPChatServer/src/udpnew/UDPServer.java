@@ -52,7 +52,7 @@ public class UDPServer {
 
         do {
             try {
-                socket = new DatagramSocket(hport);
+                socket = new DatagramSocket(hport, addr);
                 break;
             } catch (SocketException e) {
                 e.printStackTrace();
