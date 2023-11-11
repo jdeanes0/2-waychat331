@@ -29,7 +29,7 @@ public class UDPSend implements Runnable {
         this.tport = tport;
         this.IP = IP;
         this.socket = socket;
-        System.out.println("Thread initialized. Once running, type \"Close Chat Program\" to quit.");
+        System.out.println("Thread initialized. Once running, type \"CTRL-C\" to quit.");
     }
     
     /**
